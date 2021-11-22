@@ -1,0 +1,46 @@
+{
+  "icons": [
+    {
+      "id": "1",
+      "name": "picpay",
+      "src": "icons/LogoPicPay.png",
+      "backgroundColor": "#21c25e",
+      "fontColor": "#fff"
+    },
+    {
+      "id": "2",
+      "name": "ifood",
+      "src": "icons/LogoIfood.png",
+      "backgroundColor": "#ea1d2c",
+      "fontColor": "#fff"
+    },
+    {
+      "id": "3",
+      "name": "correios",
+      "src": "icons/LogoCorreios.png",
+      "backgroundColor": "#fed525",
+      "fontColor": "#000"
+    },
+    {
+      "id": "4",
+      "name": "magalu",
+      "src": "icons/LogoMagalu.png",
+      "backgroundColor": "#0e89ff",
+      "fontColor": "#fff"
+    },
+    {
+      "id": "5",
+      "name": "nubank",
+      "src": "icons/LogoNubank.png",
+      "backgroundColor": "#820ad1",
+      "fontColor": "#fff"
+    },
+    {
+      "id": "6",
+      "name": "mercadolivre",
+      "src": "icons/LogoMercadoLivre.png",
+      "backgroundColor": "#fee600",
+      "fontColor": "#000"
+    }
+  ]
+}

@@ -1,15 +1,24 @@
+import React from 'react';
 import "./style.css";
-import Sidebar from "../../components/sidebar";
+
+// Components
+import PageContainer from "../../components/PageContainer";
+
+import { useParams } from "react-router-dom";
+import {selectCompanyInfoByUrlName} from "../../utils/selectCompanyInfo";
+
+function firstLetterUppercase(word){
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
 
 const Company = () => {
-  return (
-    <div className="company">
-      <Sidebar />
-      <div className="placeholder">
-        <h1>fnjdnfidnfnkd</h1>
-      </div>
-    </div>
-  );
+    const { company }  = useParams();
+
+    return (
+        <PageContainer title={firstLetterUppercase(company)} backgroundColor={selectCompanyInfoByUrlName(company).backgroundColor}  fontColor={selectCompanyInfoByUrlName(company).fontColor}>
+            {/*<h1>{company}</h1>*/}
+        </PageContainer>
+    );
 };
 
 export default Company;
