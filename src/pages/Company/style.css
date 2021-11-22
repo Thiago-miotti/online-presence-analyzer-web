@@ -1,0 +1,9 @@
+.company {
+  display: flex;
+  background-color: #6956a7;
+  height: 100vh;
+}
+
+.placeholder {
+  width: 100%;
+}
