@@ -37,7 +37,7 @@
     },
     {
       "id": "6",
-      "name": "mercadolivre",
+      "name": "mercado-livre",
       "src": "icons/LogoMercadoLivre.png",
       "backgroundColor": "#fee600",
       "fontColor": "#000"
