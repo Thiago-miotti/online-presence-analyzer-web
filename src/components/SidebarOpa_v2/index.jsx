@@ -1,91 +1,109 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./style.css"
+
+// MUI
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import {Divider} from "@material-ui/core";
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import MenuIcon from '@material-ui/icons/Menu';
+import Slide from '@material-ui/core/Slide';
 
+// Assets
 import NubankLogo from "../../assets/LogoNubank.png";
 import IfoodLogo from "../../assets/LogoIfood.png";
 import Magalulogo from "../../assets/LogoMagalu.png";
 import MercadoLivrelogo from "../../assets/LogoMercadoLivre.png";
 import Correioslogo from "../../assets/LogoCorreios.png";
 import PicPaylogo from "../../assets/LogoPicPay.png";
-import MetrixLogo from "../../assets/metrix-logo.jpeg";
 
 // React Router
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+
+// Hooks
+import useWindowDimensions from "../../hooks/useWindowDimension";
 
 const SidebarOpa = () => {
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const {width} = useWindowDimensions();
     let navigate = useNavigate();
 
-    return(
-        <div className="sidebar-container">
-            <div className="logo-container">
-                <img alt="metrix logo" src={MetrixLogo} />
-            </div>
-            <List>
-                <Divider />
-                <ListItem button key={"NuBank"} onClick={() => navigate("/nubank")}>
-                    <ListItemIcon>
-                        <img alt="company logo" className="company-logos" src={NubankLogo} className="company-logos" />
-                    </ListItemIcon>
-                    <ListItemText primary="NuBank"/>
-                </ListItem>
-                <Divider />
-                <ListItem button key={"Mercado Livre"} onClick={() => navigate("/mercado-livre")}>
-                    <ListItemIcon>
-                        <img alt="company logo" className="company-logos" src={MercadoLivrelogo}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Mercado Livre"/>
-                </ListItem>
-                <Divider />
+    useEffect(() => {
+        if (width <= 600)
+            setSidebarOpen(false);
 
-                <ListItem button key={"Ifood"} onClick={() => navigate("/ifood")}>
-                    <ListItemIcon>
-                        <img alt="company logo" className="company-logos" src={IfoodLogo}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Ifood"/>
-                </ListItem>
-                <Divider />
+        if (width > 600)
+            setSidebarOpen(true);
 
-                <ListItem button key={"Dashboard"} onClick={() => navigate("/")}>
-                    <ListItemIcon>
-                        <DashboardIcon  style={{ color: "#fff" }} />
-                    </ListItemIcon>
-                    <ListItemText primary="Dashboard"/>
-                </ListItem>
-                <Divider />
+    }, [width])
 
-                <ListItem button key={"Magalu"} onClick={() => navigate("/magalu")}>
-                    <ListItemIcon>
-                        <img alt="company logo" className="company-logos" src={Magalulogo}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Magalu"/>
-                </ListItem>
-                <Divider />
+    const navigateAndCloseSidebar = (whereTo) => {
+        navigate(whereTo);
+        if(width <= 600)
+            setSidebarOpen(!sidebarOpen);
+    }
 
-                <ListItem button key={"Correios"} onClick={() => navigate("/correios")}>
-                    <ListItemIcon>
-                        <img alt="company logo" className="company-logos" src={Correioslogo}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Correios"/>
-                </ListItem>
-                <Divider />
+    return (
+        <>
+            {width <= 600 ? (
+                    <div style={sidebarOpen ? {left: "140px"} : {left: "2px"}} className="hamburger-menu-container"
+                         onClick={() => setSidebarOpen(!sidebarOpen)}>
+                        <MenuIcon style={{color: "#fff"}}/>
+                    </div>
+                ) :
+                null}
+            <Slide direction="right" in={sidebarOpen} mountOnEnter unmountOnExit>
+                <div className="sidebar-container"
+                     style={!sidebarOpen ? {left: "-111px"} : width <= 600 ? {left: "10px"} : {left: "50px"}}>
 
-                <ListItem button key={"PicPay"} onClick={() => navigate("/picpay")}>
-                    <ListItemIcon>
-                        <img alt="company logo" className="company-logos" src={PicPaylogo}/>
-                    </ListItemIcon>
-                    <ListItemText primary="PicPay"/>
-                </ListItem>
-                <Divider />
+                    <List>
+                        <ListItem button key={"NuBank"} onClick={() => navigateAndCloseSidebar("/nubank")}>
+                            <ListItemIcon>
+                                <img alt="company logo" className="company-logos" src={NubankLogo}
+                                     className="company-logos"/>
+                            </ListItemIcon>
+                        </ListItem>
+                        <ListItem button key={"Mercado Livre"}
+                                  onClick={() => navigateAndCloseSidebar("/mercado-livre")}>
+                            <ListItemIcon>
+                                <img alt="company logo" className="company-logos" src={MercadoLivrelogo}/>
+                            </ListItemIcon>
+                        </ListItem>
 
-            </List>
+                        <ListItem button key={"Ifood"} onClick={() => navigateAndCloseSidebar("/ifood")}>
+                            <ListItemIcon>
+                                <img alt="company logo" className="company-logos" src={IfoodLogo}/>
+                            </ListItemIcon>
+                        </ListItem>
 
-        </div>
+                        <ListItem button key={"Dashboard"} onClick={() => navigateAndCloseSidebar("/")}>
+                            <ListItemIcon>
+                                <DashboardIcon style={{color: "#fff"}} fontSize="large"/>
+                            </ListItemIcon>
+                        </ListItem>
+
+                        <ListItem button key={"Magalu"} onClick={() => navigateAndCloseSidebar("/magalu")}>
+                            <ListItemIcon>
+                                <img alt="company logo" className="company-logos" src={Magalulogo}/>
+                            </ListItemIcon>
+                        </ListItem>
+
+                        <ListItem button key={"Correios"} onClick={() => navigateAndCloseSidebar("/correios")}>
+                            <ListItemIcon>
+                                <img alt="company logo" className="company-logos" src={Correioslogo}/>
+                            </ListItemIcon>
+                        </ListItem>
+
+                        <ListItem button key={"PicPay"} onClick={() => navigateAndCloseSidebar("/picpay")}>
+                            <ListItemIcon>
+                                <img alt="company logo" className="company-logos" src={PicPaylogo}/>
+                            </ListItemIcon>
+                        </ListItem>
+                    </List>
+                </div>
+            </Slide>
+        </>
+
     );
 }
 

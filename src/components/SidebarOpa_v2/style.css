@@ -1,14 +1,19 @@
 .sidebar-container{
     color: #fff;
     background-color: #382a65;
-    height: 100vh;
-    width: 240px;
+    height: 90vh;
+    width: 110px;
     position: fixed;
+    left: 50px;
+    top: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 17px 2px rgba(0,0,0,0.14) , 0px 3px 14px 2px rgba(0,0,0,0.12) , 0px 5px 5px -3px rgba(0,0,0,0.2) ;
+    z-index: 1000;
 }
 
 .sidebar-container .company-logos{
-    width: 30px;
-    height: 30px;
+    height: 55px;
+    width: 55px;
 }
 
 .logo-container{
@@ -31,9 +36,44 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 6%;
 }
 
 .MuiListItem-root{
     height: 60px;
+    justify-content: center !important;
+}
+
+.MuiListItemIcon-root{
+    justify-content: center !important;
+}
+
+.hamburger-menu-container{
+    position: absolute;
+    top: 145px;
+    background-color: #382a65;
+
+    width: 36px;
+    height: 36px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-height: 785px){
+    .MuiList-padding,
+    .MuiList-root {
+        gap: 4%;
+    }
+}
+
+@media screen and (max-height: 650px){
+    .MuiList-padding,
+    .MuiList-root {
+        gap: 3%;
+    }
 }

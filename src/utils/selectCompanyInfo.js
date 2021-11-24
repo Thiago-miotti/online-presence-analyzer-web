@@ -1,4 +1,4 @@
-import companyIcons from '../Assets/companyLogoIcons.json';
+import companyIcons from '../assets/companyLogoIcons.json';
 
 const selectCompanyInfoById = (id) => {
     let result = companyIcons.icons.filter((icon) => icon.id.toString() === id.toString() );

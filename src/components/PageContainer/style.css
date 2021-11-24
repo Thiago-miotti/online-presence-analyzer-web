@@ -1,5 +1,5 @@
 .page-container{
-    margin-left: 240px ;
+    margin-left:  var(--sidebar-width) ;
     background-color: #f8f7fc;
     height: 100vh;
 }
@@ -8,6 +8,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    margin-bottom: 40px;
 
     padding: 40px 0;
     width: 100%;
