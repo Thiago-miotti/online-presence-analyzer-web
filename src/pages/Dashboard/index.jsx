@@ -2,11 +2,12 @@ import React from 'react';
 import "./style.css"
 
 import data from '../../assets/mockData.json';
+import lineData from '../../assets/mockLineGraphData.json';
 
 // Components
 import PageContainer from "../../components/PageContainer";
-import DashboardCard from "../../components/DashboardCard";
 import BarGraph from "../../components/Graphs/Bar";
+import LineGraph from "../../components/Graphs/Line";
 import GraphContainer from "../../components/GraphContainer";
 import TableOpa from '../../components/Table';
 
@@ -35,7 +36,7 @@ const Dashboard = () => {
                 <div className="dashboard-grid-row-2">
                     <div className="dashboard-col-1 graph-max-size">
                         <GraphContainer subtitle="overview" title="Numero de reclamaçoes">
-                            <BarGraph data={data.data} />
+                            <LineGraph data={lineData} />
                         </GraphContainer>
                     </div>
                     <div className="dashboard-col-2 graph-max-size">

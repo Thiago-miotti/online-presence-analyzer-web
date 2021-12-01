@@ -18,6 +18,7 @@
     color: #9f9f9f;
     font-size: 13px;
     font-family: var(--font-body);
+    margin-bottom: 6px;
 }
 
 .graph-container-title-container h2{

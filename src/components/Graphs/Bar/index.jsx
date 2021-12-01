@@ -5,12 +5,12 @@ import {ResponsiveBar} from '@nivo/bar'
 
 import {AutoSizer} from 'react-virtualized'
 
-const BarGraph = ({data, height, width}) => (
+const BarGraph = ({data}) => (
     <ResponsiveBar
         data={data}
         keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
         indexBy="country"
-        margin={{top: 50, right: 130, bottom: 50, left: 60}}
+        margin={{top: 0, right: 130, bottom: 50, left: 60}}
         padding={0.3}
         valueScale={{type: 'linear'}}
         indexScale={{type: 'band', round: true}}
