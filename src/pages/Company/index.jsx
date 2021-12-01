@@ -4,6 +4,9 @@ import "./style.css";
 // Components
 import PageContainer from "../../components/PageContainer";
 import DashboardCard from "../../components/DashboardCard";
+import LineGraph from "../../components/Graphs/Line";
+import GraphContainer from "../../components/GraphContainer";
+
 
 // Router
 import { useParams } from "react-router-dom";
@@ -20,9 +23,7 @@ import getSingleCompany from '../../api/getSingleCompany';
 // Utils
 import { selectCompanyInfoById, selectCompanyInfoByUrlName } from "../../utils/selectCompanyInfo";
 import prepareDataForLineGraph from "../../utils/prepareDataForLineGraph";
-import GraphContainer from "../../components/GraphContainer";
-import LineGraph from "../../components/Graphs/Line";
-import lineData from "../../assets/mockLineGraphData.json";
+import getLatestDataForCard from "../../utils/getLatestDataForCard";
 
 function firstLetterUppercase(word){
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
@@ -38,6 +39,7 @@ function splitDash(str) {
 const Company = () => {
     const [ companyData, setCompanyData ] = useState([]);
     const [ lineGraphData, setLineGraphData ] = useState([]);
+
     const { company }  = useParams();
 
     useEffect(async () => {
@@ -51,7 +53,6 @@ const Company = () => {
         if(companyData.length > 0){
             let preparedData = prepareDataForLineGraph(companyData);
             setLineGraphData(preparedData);
-            console.log(preparedData)
         }
 
     }, [companyData]);
@@ -60,10 +61,10 @@ const Company = () => {
         <PageContainer title={splitDash(company)} backgroundColor={selectCompanyInfoByUrlName(company).backgroundColor}  fontColor={selectCompanyInfoByUrlName(company).fontColor}>
             <div className="company-main-container">
                 <div className="company-grid-row-1">
-                    <DashboardCard title="teste" content="350,897" icon={<TimelineIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#21c25e" percentage="54%" sinceLabel="since yesterday"/>
-                    <DashboardCard title="teste" content="350,897" icon={<EqualizerIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#ea1d2c" percentage="54%" sinceLabel="since yesterday"/>
-                    <DashboardCard title="teste" content="350,897" icon={<ScatterPlotIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#fed525" percentage="54%" sinceLabel="since yesterday"/>
-                    <DashboardCard title="teste" content="350,897" icon={<PieChartIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#0e89ff" percentage="54%" sinceLabel="since yesterday"/>
+                    <DashboardCard title="Nota" content={companyData.length > 0 ? getLatestDataForCard(companyData, "nota") : null} icon={<TimelineIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#21c25e" percentage="54%" sinceLabel="since yesterday"/>
+                    <DashboardCard title="Reputaçao Geral" content={companyData.length > 0 ? getLatestDataForCard(companyData, "reputacao_geral") : null} icon={<EqualizerIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#ea1d2c" percentage="54%" sinceLabel="since yesterday"/>
+                    <DashboardCard title="Voltaria a negocio" content={companyData.length > 0 ? getLatestDataForCard(companyData, "voltaria_negocio") : null} icon={<ScatterPlotIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#fed525" percentage="54%" sinceLabel="since yesterday"/>
+                    <DashboardCard title="Indice de solução" content={companyData.length > 0 ? getLatestDataForCard(companyData, "indice_solucao") : null} icon={<PieChartIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#0e89ff" percentage="54%" sinceLabel="since yesterday"/>
                 </div>
 
                 <div className="dashboard-col-1 graph-max-size">

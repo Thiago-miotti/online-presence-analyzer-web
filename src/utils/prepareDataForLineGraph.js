@@ -1,4 +1,3 @@
-import formatDate from "./formatDate";
 import { DateTime } from "luxon/build/es6/luxon";
 
 const prepareDataForLineGraph = (data) => {
