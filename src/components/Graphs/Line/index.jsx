@@ -9,6 +9,7 @@ const LineGraph = ({ data  }) => (
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         yFormat=" >-.2f"
+        curve="basis"
         axisTop={null}
         axisRight={null}
         axisBottom={{

@@ -22,7 +22,7 @@ import getSingleCompany from '../../api/getSingleCompany';
 
 // Utils
 import { selectCompanyInfoById, selectCompanyInfoByUrlName } from "../../utils/selectCompanyInfo";
-import prepareDataForLineGraph from "../../utils/prepareDataForLineGraph";
+import {prepareDataForLineGraphSingleCompany, prepareDataForLineGraphAllCompanies} from "../../utils/prepareDataForLineGraph";
 import getLatestDataForCard from "../../utils/getLatestDataForCard";
 
 function firstLetterUppercase(word){
@@ -50,10 +50,8 @@ const Company = () => {
     }, [company]);
 
     useEffect(() => {
-        if(companyData.length > 0){
-            let preparedData = prepareDataForLineGraph(companyData);
-            setLineGraphData(preparedData);
-        }
+        if(companyData.length > 0)
+            setLineGraphData(prepareDataForLineGraphSingleCompany(companyData));
 
     }, [companyData]);
 
