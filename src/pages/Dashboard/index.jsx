@@ -51,7 +51,7 @@ const Dashboard = () => {
                 <div className="dashboard-grid-row-2">
                     <div className="dashboard-col-1 graph-max-size">
                         <GraphContainer subtitle="overview" title="Numero de reclamaçoes">
-                            <LineGraph data={lineGraphData} />
+                            <LineGraph data={lineGraphData} colors={['#21c25e', '#ea1d2c', "#fed525", "#0e89ff", "#820ad1", "#fee600" ]} />
                         </GraphContainer>
                     </div>
                     <div className="dashboard-col-2 graph-max-size">

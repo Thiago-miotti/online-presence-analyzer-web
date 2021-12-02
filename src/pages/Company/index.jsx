@@ -67,7 +67,7 @@ const Company = () => {
 
                 <div className="dashboard-col-1 graph-max-size">
                     <GraphContainer subtitle="overview" title="Numero de reclamaçoes">
-                        <LineGraph data={lineGraphData} />
+                        <LineGraph data={lineGraphData} colors={companyData.length > 0 ? [companyData[0].empresa_color] : null}/>
                     </GraphContainer>
                 </div>
             </div>
