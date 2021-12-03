@@ -31,7 +31,7 @@ const prepareDataForLineGraphAllCompanies = (data) => {
             companyObject.id = record.empresa_nome;
             companyObject.color = record.empresa_color;
 
-            let formattedDate = DateTime.fromISO(record.updated).toLocaleString({ month: "short", day: 'numeric' })
+            let formattedDate = DateTime.fromISO(record.updated).toLocaleString({ month: "short", day: 'numeric' });
             let coor = { "x": formattedDate, "y": parseInt(record.n_respondidas) };
 
             companyObject.data.push(coor);

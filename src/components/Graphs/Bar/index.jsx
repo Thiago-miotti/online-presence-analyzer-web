@@ -5,22 +5,23 @@ import {ResponsiveBar} from '@nivo/bar'
 
 import {AutoSizer} from 'react-virtualized'
 
-const BarGraph = ({data}) => (
+const BarGraph = ({data, colors, keys}) => (
     <ResponsiveBar
         data={data}
-        keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
-        indexBy="country"
-        margin={{top: 0, right: 130, bottom: 50, left: 60}}
+        keys={keys}
+        indexBy="dia"
+        margin={{top: 5, right: 134, bottom: 50, left: 45}}
+        // groupMode="grouped"
         padding={0.3}
         valueScale={{type: 'linear'}}
         indexScale={{type: 'band', round: true}}
-        colors={{scheme: 'nivo'}}
+        colors={colors}
         defs={[
             {
                 id: 'dots',
                 type: 'patternDots',
                 background: 'inherit',
-                color: '#38bcb2',
+                color: '#d33e3e',
                 size: 4,
                 padding: 1,
                 stagger: true
@@ -29,7 +30,7 @@ const BarGraph = ({data}) => (
                 id: 'lines',
                 type: 'patternLines',
                 background: 'inherit',
-                color: '#eed312',
+                color: '#7fe36f',
                 rotation: -45,
                 lineWidth: 6,
                 spacing: 10
@@ -38,39 +39,46 @@ const BarGraph = ({data}) => (
         fill={[
             {
                 match: {
-                    id: 'fries'
+                    id: 'respondidas'
                 },
-                id: 'dots'
+                id: 'lines'
             },
             {
                 match: {
-                    id: 'sandwich'
+                    id: 'reclamacoes'
                 },
-                id: 'lines'
+                id: 'dots'
             }
         ]}
-        borderColor={{from: 'color', modifiers: [['darker', 1.6]]}}
         axisTop={null}
         axisRight={null}
         axisBottom={{
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'country',
+            legend: 'data',
             legendPosition: 'middle',
             legendOffset: 32
         }}
         axisLeft={{
+            format: value =>
+                `${Number(value).toLocaleString('pt-BR', {
+                    minimumFractionDigits: 0,
+                })}`,
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: 0,
-            legend: 'food',
+            tickRotation: -50,
+            legend: '',
             legendPosition: 'middle',
             legendOffset: -40
         }}
         labelSkipWidth={12}
+        label={""}
         labelSkipHeight={12}
-        labelTextColor={{from: 'color', modifiers: [['darker', 1.6]]}}
+        labelTextColor={"#000"}
+        valueFormat={value => `${Number(value).toLocaleString('pt-BR', {
+                minimumFractionDigits: 0,
+            })}`}
         legends={[
             {
                 dataFrom: 'keys',
@@ -95,11 +103,31 @@ const BarGraph = ({data}) => (
                 ]
             }
         ]}
-        role="application"
-        ariaLabel="Nivo bar chart demo"
-        barAriaLabel={function (e) {
-            return e.id + ": " + e.formattedValue + " in country: " + e.indexValue
+        tooltip={function (e) {
+            return (
+                <div
+                    style={{
+                        padding: 12,
+                        color: "#000",
+                        background: '#fff',
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        fontSize: "14px",
+                        fontFamily: "var(--font-body)"
+                    }}
+                >
+                    <div style={{width: "10px", height: "10px", backgroundColor: e.color, display: "block"}} />
+                    <span>{e.id}</span>
+                    <strong>
+                        {`${Number(e.value).toLocaleString('pt-BR', {
+                            minimumFractionDigits: 0,
+                        })}`}
+                    </strong>
+                </div>
+            )
         }}
+
     />
 );
 
