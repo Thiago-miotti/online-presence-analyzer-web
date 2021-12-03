@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ruby",
+    "label": "ruby",
+    "value": 511,
+    "color": "hsl(47, 70%, 50%)"
+  },
+  {
+    "id": "c",
+    "label": "c",
+    "value": 52,
+    "color": "hsl(338, 70%, 50%)"
+  },
+  {
+    "id": "erlang",
+    "label": "erlang",
+    "value": 336,
+    "color": "hsl(314, 70%, 50%)"
+  },
+  {
+    "id": "python",
+    "label": "python",
+    "value": 28,
+    "color": "hsl(75, 70%, 50%)"
+  },
+  {
+    "id": "lisp",
+    "label": "lisp",
+    "value": 396,
+    "color": "hsl(47, 70%, 50%)"
+  }
+]

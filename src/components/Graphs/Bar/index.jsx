@@ -15,7 +15,7 @@ const BarGraph = ({data, colors, keys}) => (
         padding={0.3}
         valueScale={{type: 'linear'}}
         indexScale={{type: 'band', round: true}}
-        colors={colors}
+        // colors={colors}
         defs={[
             {
                 id: 'dots',
@@ -30,7 +30,7 @@ const BarGraph = ({data, colors, keys}) => (
                 id: 'lines',
                 type: 'patternLines',
                 background: 'inherit',
-                color: '#7fe36f',
+                color: '#eed312',
                 rotation: -45,
                 lineWidth: 6,
                 spacing: 10
@@ -39,13 +39,13 @@ const BarGraph = ({data, colors, keys}) => (
         fill={[
             {
                 match: {
-                    id: 'respondidas'
+                    id: 'Mercado Livre'
                 },
                 id: 'lines'
             },
             {
                 match: {
-                    id: 'reclamacoes'
+                    id: 'Ifood'
                 },
                 id: 'dots'
             }

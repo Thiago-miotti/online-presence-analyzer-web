@@ -14,12 +14,13 @@ const prepareDataForBarGraphSingleCompany = (data) => {
 }
 
 const prepareDataForBarGraphAllCompanies = (data) => {
+    const copyOfData = data;
     let formattedData = [];
     let groupedRecords = [];
     let answeredPerDay = [];
     let days = [];
 
-    for(const r of data) {
+    for(const r of copyOfData) {
         r.updated = DateTime.fromISO(r.updated).toLocaleString({ month: "short", day: 'numeric' });
 
         if(!groupedRecords[r.empresa_id]) groupedRecords[r.empresa_id] = [];

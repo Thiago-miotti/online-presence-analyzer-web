@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import "./style.css"
 
-import data from '../../assets/mockData.json';
-import lineData from '../../assets/mockLineGraphData.json';
-
 // Components
 import PageContainer from "../../components/PageContainer";
 import BarGraph from "../../components/Graphs/Bar";
 import LineGraph from "../../components/Graphs/Line";
 import GraphContainer from "../../components/GraphContainer";
 import TableOpa from '../../components/Table';
+import DonutChart from "../../components/Graphs/Donut";
+
+// Mocks
+import mockDonutData from '../../assets/mocks/mockDonutGraphData.json';
+import data from '../../assets/mocks/mockData.json';
+import lineData from '../../assets/mocks/mockLineGraphData.json';
 
 // Http
 import getAllCompanies from '../../api/getAllCompanies';
@@ -18,12 +21,14 @@ import scrapeAllCompanies from "../../api/scrapeAllCompanies";
 // Utils
 import {prepareDataForLineGraphAllCompanies} from "../../utils/prepareDataForLineGraph";
 import {prepareDataForBarGraphAllCompanies} from "../../utils/prepareDataForBarGraph";
+import {prepareDataForDonutChart} from '../../utils/prepareDataForDonutChart';
 
 const Dashboard = () => {
     const [ refresh, setRefresh ] = useState(false);
     const [ companiesData, setCompaniesData ] = useState([]);
     const [ lineGraphData, setLineGraphData ] = useState([]);
     const [ barGraphData, setBarGraphData ] = useState([]);
+    const [ donutGraphData, setDonutGraphData ] = useState([]);
 
     useEffect(async () => {
         let data = await getAllCompanies();
@@ -33,6 +38,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         if(companiesData.length > 0)
+            setDonutGraphData(prepareDataForDonutChart(companiesData));
             setLineGraphData(prepareDataForLineGraphAllCompanies(companiesData));
             setBarGraphData(prepareDataForBarGraphAllCompanies(companiesData));
 
@@ -66,8 +72,8 @@ const Dashboard = () => {
                         </GraphContainer>
                     </div>
                     <div className="dashboard-col-2 graph-max-size">
-                        <GraphContainer subtitle="overview" title="Numero de reclamaçoes">
-                            <BarGraph data={data.data} />
+                        <GraphContainer subtitle="overview" title="Reclamaçoes">
+                            <DonutChart data={donutGraphData} />
                         </GraphContainer>
                     </div>
                 </div>

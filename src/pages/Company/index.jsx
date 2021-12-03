@@ -24,7 +24,7 @@ import scrapeSingeCompany from "../../api/scrapeSingleCompanie";
 // Utils
 import { selectCompanyInfoByUrlName } from "../../utils/selectCompanyInfo";
 import { prepareDataForLineGraphSingleCompany } from "../../utils/prepareDataForLineGraph";
-import getLatestDataForCard from "../../utils/getLatestDataForCard";
+import { getLatestDataForCard } from "../../utils/getLatestDataForCard";
 import { prepareDataForBarGraphSingleCompany } from "../../utils/prepareDataForBarGraph";
 
 function firstLetterUppercase(word){
@@ -83,7 +83,7 @@ const Company = () => {
                 </div>
 
                 <GraphContainer subtitle="overview" title="Numero de reclamações x Numero de reclamações respondidas">
-                    <BarGraph data={barGraphData} keys={['respondidas', 'reclamacoes']} colors={["#4ec540", "#f34c4c"]} />
+                    <BarGraph data={barGraphData} keys={['respondidas', 'reclamacoes']} colors={[companyData.length > 0 ? [companyData[0].empresa_color] : null, "#f34c4c"]} />
                 </GraphContainer>
             </div>
         </PageContainer>

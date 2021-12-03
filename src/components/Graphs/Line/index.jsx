@@ -2,10 +2,6 @@ import React from 'react';
 
 import {ResponsiveLine} from '@nivo/line'
 
-const calculatePrevious = (e, data) => {
-    console.log(data)
-}
-
 const LineGraph = ({data, colors}) => (
     <ResponsiveLine
         data={data}

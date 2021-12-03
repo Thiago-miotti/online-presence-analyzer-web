@@ -37,4 +37,4 @@ const chooseStat = (data, chosenStat) => {
     }
 }
 
-export default getLatestDataForCard;
+export {getLatestDataForCard, getLatest};
