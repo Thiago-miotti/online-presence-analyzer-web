@@ -22,7 +22,8 @@ const prepareDataForDonutChart = (data) => {
         })
 
         const latestValue = getLatest(companies);
-        companyObject.value = latestValue.reclamacoes_total;
+        if(latestValue)
+            companyObject.value = latestValue.reclamacoes_total;
 
         formattedData.push(companyObject);
     });

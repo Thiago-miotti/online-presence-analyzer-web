@@ -23,19 +23,20 @@ const rows = [
 
 const useStyles = makeStyles({
     table: {
-        minWidth: 650,
+        // minWidth: 650,
     },
 });
 
 const TableOpa = ({data}) => {
     const classes = useStyles();
+    const columnCellStyle = {borderBottom: 0, paddingBottom: 0, paddingTop: 0, lineHeight: 0};
     return (
         <div className="table-container" style={{ height: 400, width: '100%' }}>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell style={{borderBottom: 0, paddingBottom: 0, paddingTop: 0, lineHeight: 0}}> </TableCell>
-                        <TableCell style={{borderBottom: 0, paddingBottom: 0, paddingTop: 0, lineHeight: 0}} align="right"> </TableCell>
+                        <TableCell style={columnCellStyle}> </TableCell>
+                        <TableCell style={columnCellStyle} align="right"> </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

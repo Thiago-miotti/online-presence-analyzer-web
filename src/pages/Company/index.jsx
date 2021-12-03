@@ -70,10 +70,10 @@ const Company = () => {
         <PageContainer title={splitDash(company)} updateFunctionCall={runScrapeService} backgroundColor={selectCompanyInfoByUrlName(company).backgroundColor}  fontColor={selectCompanyInfoByUrlName(company).fontColor}>
             <div className="company-main-container">
                 <div className="company-grid-row-1">
-                    <DashboardCard title="Nota" content={companyData.length > 0 ? getLatestDataForCard(companyData, "nota") : null} icon={<TimelineIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#21c25e" percentage="54%" sinceLabel="since yesterday"/>
-                    <DashboardCard title="Reputaçao Geral" content={companyData.length > 0 ? getLatestDataForCard(companyData, "reputacao_geral") : null} icon={<EqualizerIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#ea1d2c" percentage="54%" sinceLabel="since yesterday"/>
-                    <DashboardCard title="Voltaria a negocio" content={companyData.length > 0 ? getLatestDataForCard(companyData, "voltaria_negocio") : null} icon={<ScatterPlotIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#fed525" percentage="54%" sinceLabel="since yesterday"/>
-                    <DashboardCard title="Indice de solução" content={companyData.length > 0 ? getLatestDataForCard(companyData, "indice_solucao") : null} icon={<PieChartIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#0e89ff" percentage="54%" sinceLabel="since yesterday"/>
+                    <DashboardCard title="Nota" content={companyData.length > 0 ? getLatestDataForCard(companyData, "nota") : null} icon={<TimelineIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#21c25e" percentage={"0%"} sinceLabel="since yesterday"/>
+                    <DashboardCard title="Reputaçao Geral" content={companyData.length > 0 ? getLatestDataForCard(companyData, "reputacao_geral") : null} icon={<EqualizerIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#ea1d2c" percentage={"0%"} sinceLabel="since yesterday"/>
+                    <DashboardCard title="Voltaria a negocio" content={companyData.length > 0 ? getLatestDataForCard(companyData, "voltaria_negocio") : null} icon={<ScatterPlotIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#fed525" percentage={"0%"} sinceLabel="since yesterday"/>
+                    <DashboardCard title="Indice de solução" content={companyData.length > 0 ? getLatestDataForCard(companyData, "indice_solucao") : null} icon={<PieChartIcon style={{color: "#fff"}}/>} upOrDown="1" iconContainerBgColor="#0e89ff" percentage={"0%"} sinceLabel="since yesterday"/>
                 </div>
 
                 <div className="dashboard-col-1 graph-max-size">

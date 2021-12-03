@@ -37,10 +37,11 @@ const Dashboard = () => {
     }, [refresh]);
 
     useEffect(() => {
-        if(companiesData.length > 0)
+        if(companiesData.length > 0){
             setDonutGraphData(prepareDataForDonutChart(companiesData));
             setLineGraphData(prepareDataForLineGraphAllCompanies(companiesData));
             setBarGraphData(prepareDataForBarGraphAllCompanies(companiesData));
+        }
 
     }, [companiesData]);
 

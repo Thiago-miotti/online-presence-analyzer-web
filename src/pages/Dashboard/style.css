@@ -34,3 +34,15 @@
 .dashboard-col-2{
     grid-area: col-2;
 }
+
+@media screen and (max-width: 1300px){
+    .dashboard-grid-row-2{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        grid-template-areas:
+        "col-1"
+        "col-2";
+        gap: 20px;
+    }
+}

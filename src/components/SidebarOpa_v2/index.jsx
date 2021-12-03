@@ -28,24 +28,26 @@ const SidebarOpa = () => {
     const {width} = useWindowDimensions();
     let navigate = useNavigate();
 
+    const minWidth = 600;
+
     useEffect(() => {
-        if (width <= 600)
+        if (width <= minWidth)
             setSidebarOpen(false);
 
-        if (width > 600)
+        if (width > minWidth)
             setSidebarOpen(true);
 
     }, [width])
 
     const navigateAndCloseSidebar = (whereTo) => {
         navigate(whereTo);
-        if(width <= 600)
+        if(width <= minWidth)
             setSidebarOpen(!sidebarOpen);
     }
 
     return (
         <>
-            {width <= 600 ? (
+            {width <= minWidth ? (
                     <div style={sidebarOpen ? {left: "140px"} : {left: "2px"}} className="hamburger-menu-container"
                          onClick={() => setSidebarOpen(!sidebarOpen)}>
                         <MenuIcon style={{color: "#fff"}}/>
@@ -54,7 +56,7 @@ const SidebarOpa = () => {
                 null}
             <Slide direction="right" in={sidebarOpen} mountOnEnter unmountOnExit>
                 <div className="sidebar-container"
-                     style={!sidebarOpen ? {left: "-111px"} : width <= 600 ? {left: "10px"} : {left: "50px"}}>
+                     style={!sidebarOpen ? {left: "-111px"} : width <= minWidth ? {left: "10px"} : {left: "50px"}}>
 
                     <List>
                         <ListItem button key={"NuBank"} onClick={() => navigateAndCloseSidebar("/nubank")}>

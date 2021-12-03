@@ -24,8 +24,8 @@ const DashboardCard = ({title, content, percentage, upOrDown, sinceLabel, icon, 
             </div>
             <div className="dashboard-card-row-2">
                 <div className="grow-percentage">
-                    {upOrDown === 0 ? <TrendingDownIcon fontSize="small" style={{color: "#fa2d2d"}}  /> : <TrendingUpIcon fontSize="small" style={{color: "#1df127"}} /> }
-                    <p style={ upOrDown === 0 ? {color:"#fa2d2d"}: {color:"#1df127"} }>{percentage}</p>
+                    {upOrDown === "0" ? <TrendingDownIcon fontSize="small" style={{color: "#fa2d2d"}}  /> : <TrendingUpIcon fontSize="small" style={{color: "#1df127"}} /> }
+                    <p style={ upOrDown === "0" ? {color:"#fa2d2d"}: {color:"#1df127"} }>{percentage}</p>
                 </div>
                 <p>{sinceLabel}</p>
             </div>
